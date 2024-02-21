@@ -1,5 +1,7 @@
 <template>
-    <div id="app">
-        Test
-    </div>
+    <Home />
 </template>
+
+<script setup>
+    import Home from './Home.vue'
+</script>
