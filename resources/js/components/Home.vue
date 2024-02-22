@@ -31,11 +31,11 @@
                     </v-col>
 
                     <v-col cols="12" md="8">
-                        <v-card
-                            class="mb-4"
-                        >
+                        <v-card class="mb-4">
                             <v-card-actions>
-                                <v-btn color="primary" variant="tonal">Create Post</v-btn>
+                                <v-btn color="primary" variant="tonal"
+                                    >Create Post</v-btn
+                                >
                             </v-card-actions>
                         </v-card>
 
@@ -43,7 +43,7 @@
                             <v-card
                                 :title="blog.title"
                                 subtitle="Subtitle"
-                                :text="blog.content"
+                                :text="blog.body"
                                 class="mb-4"
                             >
                                 <v-card-actions>
@@ -65,39 +65,24 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from "vue";
+
 const links = ["Dashboard", "Messages", "Profile", "Updates"];
 
-const blogs = [
-    {
-        id: 1,
-        title: "Blog 1",
-        content: "Content 1",
-        created_at: "2022-01-01 00:00:00",
-    },
-    {
-        id: 2,
-        title: "Blog 2",
-        content: "Content 2",
-        created_at: "2022-01-01 00:00:00",
-    },
-    {
-        id: 3,
-        title: "Blog 3",
-        content: "Content 3",
-        created_at: "2022-01-01 00:00:00",
-    },
-];
+const blogs = ref([]);
 
-const apiUrl = 'https://hn.algolia.com/api/v1/search_by_date?tags=story&query=blog'; // API endpoint for fetching blog posts
+const getData = async () => {
+    await fetch("https://jsonplaceholder.typicode.com/posts")
+        .then((response) => response.json())
+        .then((data) => {
+            blogs.value.push(...data);
+        })
+        .catch((error) => {
+            console.log("Error fetching blog posts:", error);
+        });
+};
 
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    // Data contains the blog posts
-    console.log(data.hits);
-  })
-  .catch(error => {
-    console.log('Error fetching blog posts:', error);
-  });
-
+onMounted(() => {
+    getData();
+});
 </script>
