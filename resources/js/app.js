@@ -27,6 +27,9 @@ const vuetify = createVuetify({
     },
 });
 
+import router from "./router/index.js";
+
 const app = createApp(App);
 app.use(vuetify);
+app.use(router);
 app.mount("#app");

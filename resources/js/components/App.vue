@@ -1,7 +1,13 @@
 <template>
-    <Home />
+    <v-app id="inspire">
+
+        <Nav/>
+
+        <router-view></router-view>
+
+    </v-app>
 </template>
 
 <script setup>
-    import Home from './Home.vue'
+import Nav from "./Nav.vue";
 </script>
