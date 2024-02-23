@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Blogs with Laravel 10 and vue 3</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -20,7 +20,7 @@
     <body class="antialiased">
 
         <div id="app">
-            
+
         </div>
 
         @vite('resources/js/app.js')

@@ -12,7 +12,7 @@ const routes = [
         component: () => import('../components/Profile.vue')
     },
     {
-        path: '/detail',
+        path: '/detail/:id',
         name: 'detail',
         component: () => import('../components/Detail.vue')
     },

@@ -3,8 +3,9 @@
 
         <Nav/>
 
-        <router-view></router-view>
-
+        <v-main class="bg-grey-lighten-3">
+            <router-view></router-view>
+        </v-main>
     </v-app>
 </template>
 
