@@ -10,9 +10,10 @@
             <v-col cols="12" md="8">
                 <v-card class="mb-4">
                     <v-card-actions>
-                        <v-btn color="primary" variant="tonal"
-                            >Create Post</v-btn
-                        >
+                        <router-link to="/create">
+                            <v-btn color="green-darken-1" variant="tonal"
+                            ><v-icon>mdi-plus</v-icon> Create Post</v-btn>
+                        </router-link>
                     </v-card-actions>
                 </v-card>
 
@@ -37,7 +38,7 @@
                         </div>
 
                         <v-card-text>
-                            {{ blog.content }}
+                            {{ $limitString(blog.content) }}
                         </v-card-text>
 
                         <v-card-actions>

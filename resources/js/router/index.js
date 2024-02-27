@@ -17,6 +17,11 @@ const routes = [
         component: () => import('../components/Detail.vue')
     },
     {
+        path: '/create',
+        name: 'form',
+        component: () => import('../components/Form.vue')
+    },
+    {
         path: '/:patchMatch(.*)*',
         component: () => import('../components/NotFound.vue')
     }

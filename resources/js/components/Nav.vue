@@ -1,11 +1,13 @@
 <template>
     <div>
         <v-app-bar class="px-3" flat density="compact">
-            <v-avatar
-                color="grey-darken-1"
-                class="hidden-md-and-up"
-                size="32"
-            ></v-avatar>
+            <v-btn
+                class="ma-2"
+                density="comfortable"
+                icon="mdi-arrow-left"
+                variant="tonal"
+                @click="$goBack"
+            ></v-btn>
 
             <v-spacer></v-spacer>
 
@@ -37,5 +39,5 @@ const links = [
         name: 'Profile',
         path: '/profile'
     }
-]
+];
 </script>

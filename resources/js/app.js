@@ -9,7 +9,9 @@ import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 
-import colors from "vuetify/util/colors";
+// import colors from "vuetify/util/colors";
+
+import '@mdi/font/css/materialdesignicons.css';
 
 const vuetify = createVuetify({
     components,
@@ -17,19 +19,28 @@ const vuetify = createVuetify({
     theme: {
         themes: {
             light: {
-                dark: false,
-                colors: {
-                    primary: colors.red.darken1, // #E53935
-                    secondary: colors.red.lighten4, // #FFCDD2
-                },
+                dark: false
             },
         },
+    },
+    icons: {
+        defaultSet: "mdi",
     },
 });
 
 import router from "./router/index.js";
 
 const app = createApp(App);
+app.config.globalProperties.$goBack = () => {
+    router.back();
+}
+app.config.globalProperties.$limitString = (str, maxLength = 100) => {
+    if (str.length > maxLength) {
+        return str.substr(0, maxLength) + '...';
+    } else {
+        return str;
+    }
+}
 app.use(vuetify);
 app.use(router);
 app.mount("#app");
