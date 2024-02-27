@@ -17,6 +17,14 @@
                     </v-card-actions>
                 </v-card>
 
+                <v-card :class="blogLoader ? 'd-inline' : 'd-none'">
+                    <v-skeleton-loader
+                        class="mx-auto border mb-4"
+                        type="image, article"
+                        v-for="i in 3" :key="i"
+                    ></v-skeleton-loader>
+                </v-card>
+
                 <div v-for="blog in blogs" :key="blog.id">
                     <v-card
                         class="mb-4"
@@ -63,15 +71,19 @@
 import { ref, onMounted } from "vue";
 
 const blogs = ref([]);
+const blogLoader = ref(true);
 
 const getData = async () => {
+    blogLoader.value = true;
     await fetch("https://jsonplaceholder.org/posts")
         .then((response) => response.json())
         .then((data) => {
             blogs.value.push(...data);
+            blogLoader.value = false;
         })
         .catch((error) => {
             console.log("Error fetching blog posts:", error);
+            blogLoader.value = false;
         });
 };
 
